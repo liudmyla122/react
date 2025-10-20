@@ -1,0 +1,182 @@
+.contactsPage {
+  flex: 1;
+  padding: 60px 0;
+  background: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contactHeader {
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactItem {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.formSection {
+  flex: 1;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.formRow {
+  display: flex;
+  gap: 20px;
+}
+
+.formInput {
+  flex: 1;
+  padding: 15px 20px;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background: #fafafa;
+  transition: border-color 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #007bff;
+  background: white;
+}
+
+.formTextarea {
+  padding: 15px 20px;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background: #fafafa;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s ease;
+}
+
+.formTextarea:focus {
+  outline: none;
+  border-color: #007bff;
+  background: white;
+}
+
+.submitButton {
+  padding: 15px 40px;
+  background: #111111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+.submitButton:hover {
+  background: #0056b3;
+}
+
+.socialSection {
+  flex: 0 0 300px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.socialTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iconWrapper:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+@media (max-width: 968px) {
+  .contentWrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .socialSection {
+    flex: none;
+    width: 100%;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactsPage {
+    padding: 40px 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
