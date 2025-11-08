@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.content {
+  max-width: 800px;
+  padding: 20px 0;
+}
+
+.codeBlock {
+  position: relative;
+  height: 200px;
+  margin: 0 auto 100px auto;
+  max-width: 800px;
+}
+
+.errorCode {
+  position: absolute;
+  font-size: 280px;
+  font-weight: 800;
+  color: #0d50ff;
+  line-height: 1;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+/*  ПОЗИЦИОНИРОВАНИЕ ДЛЯ БОЛЬШИХ ЭКРАНОВ ( > 1024px) */
+.codeBlock > .errorCode:nth-child(1) {
+  left: calc(50% - 280px);
+}
+
+.codeBlock > .errorCode:nth-child(3) {
+  left: calc(50% + 280px);
+}
+
+.errorImage {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 18px;
+  color: #6a6a6a;
+  margin: 0 auto;
+  max-width: 450px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.homeButton {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #0d50ff;
+  color: white;
+  padding: 12px 35px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  box-shadow: none;
+}
+
+.homeButton:hover {
+  background-color: #1a5acb;
+}
+
+/* --- АДАПТИВНОСТЬ: ПЛАНШЕТЫ (до 1024px) --- */
+@media (max-width: 1024px) {
+  .codeBlock {
+    height: 150px;
+    margin-bottom: 60px;
+  }
+  .errorCode {
+    font-size: 180px;
+  }
+
+  .errorImage {
+    width: 150px;
+    top: 5%;
+  }
+
+  .codeBlock > .errorCode:nth-child(1) {
+    left: calc(50% - 182px);
+  }
+  .codeBlock > .errorCode:nth-child(3) {
+    left: calc(50% + 182px);
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .description {
+    font-size: 17px;
+  }
+}
+
+/* --- АДАПТИВНОСТЬ: МОБИЛЬНЫЕ УСТРОЙСТВА (до 768px) --- */
+@media (max-width: 768px) {
+  .codeBlock {
+    height: 120px;
+    margin-bottom: 40px;
+  }
+  .errorCode {
+    font-size: 100px;
+  }
+
+  .errorImage {
+    width: 80px;
+    top: 0%;
+  }
+
+  /* Смещение: 84px от центра */
+  .codeBlock > .errorCode:nth-child(1) {
+    left: calc(50% - 84px);
+  }
+  .codeBlock > .errorCode:nth-child(3) {
+    left: calc(50% + 84px);
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .homeButton {
+    padding: 12px 30px;
+    font-size: 18px;
+  }
+}

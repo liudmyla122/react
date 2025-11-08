@@ -1,0 +1,125 @@
+.filterBar {
+  display: flex;
+  padding: 10px 0 30px;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: none;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.priceInputs {
+  display: flex;
+  gap: 10px;
+}
+
+.input,
+.select {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #444;
+  width: 80px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.select {
+  width: 120px;
+  appearance: none;
+  background-position: right 8px center;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .filterBar {
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .label {
+    font-size: 15px;
+  }
+
+  .input,
+  .select {
+    font-size: 13px;
+    width: 75px;
+    padding: 7px 8px;
+  }
+
+  .select {
+    width: 110px;
+  }
+
+  .checkboxLabel {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filterBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .filterGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .priceInputs {
+    gap: 8px;
+  }
+
+  .input,
+  .select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .checkboxLabel {
+    font-size: 14px;
+  }
+
+  .checkbox {
+    width: 16px;
+    height: 16px;
+  }
+}

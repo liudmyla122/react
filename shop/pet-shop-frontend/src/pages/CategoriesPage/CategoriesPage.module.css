@@ -1,0 +1,165 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 30px 20px 80px 20px;
+  min-height: 80vh;
+}
+
+.pageTitle {
+  font-size: 60px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.breadcrumbsContainer {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.breadcrumbLine {
+  display: block;
+  height: 1px;
+  width: 20px;
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.breadcrumbButton {
+  text-decoration: none;
+  color: #666;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.breadcrumbButton:hover {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #aaa;
+}
+
+.breadcrumbCurrentButton {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  color: white;
+  background-color: #333;
+  border-color: #333;
+}
+
+.breadcrumbCurrent {
+  color: #666;
+  font-weight: 600;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.categoryLink {
+  text-decoration: none;
+  display: block;
+}
+
+.status {
+  text-align: center;
+  font-size: 24px;
+  padding: 50px;
+  color: #2f6ce5;
+}
+
+.statusError {
+  text-align: center;
+  font-size: 24px;
+  padding: 50px;
+  color: #d9534f;
+}
+
+/*  АДАПТИВНОСТЬ: ПЛАНШЕТЫ (до 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 25px 15px 60px 15px;
+  }
+
+  .pageTitle {
+    font-size: 48px;
+    margin-bottom: 30px;
+  }
+
+  .breadcrumbsContainer {
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumbButton,
+  .breadcrumbCurrentButton {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .categoriesGrid {
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/*  АДАПТИВНОСТЬ: МОБИЛЬНЫЕ УСТРОЙСТВА (до 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 10px 50px 10px;
+  }
+
+  .pageTitle {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+
+  .breadcrumbsContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .breadcrumbLine {
+    display: none;
+  }
+
+  .breadcrumbButton,
+  .breadcrumbCurrentButton {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    .categoriesGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .pageTitle {
+      font-size: 26px;
+    }
+  }
+}
