@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Версия JS, в которую компилируем TS
+    "module": "ESNext", // Используем ES-модули
+    "moduleResolution": "node", // Разрешение модулей как в Node.js
+    "strict": true, // Включает все строгие проверки
+    "esModuleInterop": true, // Позволяет импортировать CommonJS модули через import
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // Пропуск проверки типов библиотек
+    "outDir": "./dist", // Папка для скомпилированных файлов
+    "rootDir": "./", // Корень проекта
+    "resolveJsonModule": true, // Позволяет импортировать JSON файлы через import
+    "allowJs": false // Разрешает компилировать только TS
+  },
+  "include": ["./**/*.js"], // Включаем все .ts файлы рекурсивно
+  "exclude": ["node_modules", "dist"] // Исключаем папки node_modules и dist
+}
