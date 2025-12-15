@@ -1,0 +1,26 @@
+{
+    "sourceFile": "hw12-mongo/src/db/index.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1765787817980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1765787858765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n export async function connectDB() {\n   try {\n     await client.connect()\n     console.log('Connected to MongoDB')\n-    return client.db() // возвращаем объект базы данных\n+    return client.db()\n   } catch (err) {\n     console.error('Failed to connect to MongoDB', err)\n     process.exit(1)\n   }\n"
+                },
+                {
+                    "date": 1765788718970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,15 +2,25 @@\n import dotenv from 'dotenv'\n \n dotenv.config()\n \n-const client = new MongoClient(process.env.MONGO_URI!)\n+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/HW'\n+const DB_NAME = 'HW'\n \n+const client = new MongoClient(MONGO_URI)\n+\n export async function connectDB() {\n   try {\n     await client.connect()\n     console.log('Connected to MongoDB')\n-    return client.db()\n+\n+    const db = client.db(DB_NAME)\n+    console.log(`Using database: ${DB_NAME}`)\n+\n+    await db.admin().ping()\n+    console.log('Database connection verified')\n+\n+    return db\n   } catch (err) {\n     console.error('Failed to connect to MongoDB', err)\n     process.exit(1)\n   }\n"
+                }
+            ],
+            "date": 1765787817980,
+            "name": "Commit-0",
+            "content": "import { MongoClient } from 'mongodb'\nimport dotenv from 'dotenv'\n\ndotenv.config()\n\nconst client = new MongoClient(process.env.MONGO_URI!)\n\nexport async function connectDB() {\n  try {\n    await client.connect()\n    console.log('Connected to MongoDB')\n    return client.db() // возвращаем объект базы данных\n  } catch (err) {\n    console.error('Failed to connect to MongoDB', err)\n    process.exit(1)\n  }\n}\n"
+        }
+    ]
+}

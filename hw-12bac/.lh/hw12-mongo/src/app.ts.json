@@ -1,0 +1,26 @@
+{
+    "sourceFile": "hw12-mongo/src/app.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1765787846977,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1765787967985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import express from 'express'\n import { connectDB } from './db/index'\n+import { ObjectId } from 'mongodb'\n \n const app = express()\n app.use(express.json())\n \n"
+                },
+                {
+                    "date": 1765788012261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,73 @@\n   })\n \n   app.listen(PORT, () => console.log(`Server started on port ${PORT}`))\n }\n+import { ObjectId } from 'mongodb'\n \n+async function startServer() {\n+  const db = await connectDB()\n+  const productsCollection = db.collection('products')\n+\n+  // CREATE\n+  app.post('/products', async (req, res) => {\n+    try {\n+      const result = await productsCollection.insertOne(req.body)\n+      res.status(201).json(result)\n+    } catch (err) {\n+      res.status(500).json({ error: err })\n+    }\n+  })\n+\n+  // READ all\n+  app.get('/products', async (req, res) => {\n+    try {\n+      const products = await productsCollection.find().toArray()\n+      res.json(products)\n+    } catch (err) {\n+      res.status(500).json({ error: err })\n+    }\n+  })\n+\n+  // READ one\n+  app.get('/products/:id', async (req, res) => {\n+    try {\n+      const product = await productsCollection.findOne({\n+        _id: new ObjectId(req.params.id),\n+      })\n+      if (!product)\n+        return res.status(404).json({ message: 'Product not found' })\n+      res.json(product)\n+    } catch (err) {\n+      res.status(500).json({ error: err })\n+    }\n+  })\n+\n+  // UPDATE\n+  app.put('/products/:id', async (req, res) => {\n+    try {\n+      const result = await productsCollection.updateOne(\n+        { _id: new ObjectId(req.params.id) },\n+        { $set: req.body }\n+      )\n+      res.json(result)\n+    } catch (err) {\n+      res.status(500).json({ error: err })\n+    }\n+  })\n+\n+  // DELETE\n+  app.delete('/products/:id', async (req, res) => {\n+    try {\n+      const result = await productsCollection.deleteOne({\n+        _id: new ObjectId(req.params.id),\n+      })\n+      res.json(result)\n+    } catch (err) {\n+      res.status(500).json({ error: err })\n+    }\n+  })\n+\n+  app.listen(PORT, () => console.log(`Server started on port ${PORT}`))\n+}\n+\n startServer()\n"
+                }
+            ],
+            "date": 1765787846977,
+            "name": "Commit-0",
+            "content": "import express from 'express'\nimport { connectDB } from './db/index'\n\nconst app = express()\napp.use(express.json())\n\nconst PORT = process.env.PORT || 3000\n\nasync function startServer() {\n  const db = await connectDB()\n\n  app.get('/', (req, res) => {\n    res.send('Server is running')\n  })\n\n  app.listen(PORT, () => console.log(`Server started on port ${PORT}`))\n}\n\nstartServer()\n"
+        }
+    ]
+}
