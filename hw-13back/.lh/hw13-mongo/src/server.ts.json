@@ -1,0 +1,30 @@
+{
+    "sourceFile": "hw13-mongo/src/server.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1765961261787,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1765961286013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,27 @@\n \n const startServer = async () => {\n   await connectDB()\n \n+  // === TEST ONE-TO-MANY ===\n+const publisher = await Publisher.create({\n+  name: \"Science Press\",\n+  location: \"Berlin\"\n+});\n+\n+await Magazine.create({\n+  title: \"Quantum Monthly\",\n+  issueNumber: 42,\n+  publisher: publisher._id\n+});\n+\n+const magazines = await Magazine.find().populate(\"publisher\");\n+\n+console.log(\n+  JSON.stringify(magazines, null, 2)\n+);\n+\n+\n   app.listen(PORT, () => {\n     console.log(`🚀 Server started on port ${PORT}`)\n   })\n }\n"
+                },
+                {
+                    "date": 1765961367251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,11 @@\n import dotenv from 'dotenv'\n import { Publisher } from './models/Publisher'\n import { Magazine } from './models/Magazine'\n+import { Article } from \"./models/Article\";\n+import { Tag } from \"./models/Tag\";\n \n+\n dotenv.config()\n \n import app from './app'\n import { connectDB } from './config/db'\n@@ -27,8 +30,10 @@\n   const magazines = await Magazine.find().populate('publisher')\n \n   console.log(JSON.stringify(magazines, null, 2))\n \n+  \n+\n   app.listen(PORT, () => {\n     console.log(`🚀 Server started on port ${PORT}`)\n   })\n }\n"
+                },
+                {
+                    "date": 1765961405769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,29 @@\n   const magazines = await Magazine.find().populate('publisher')\n \n   console.log(JSON.stringify(magazines, null, 2))\n \n+  // === TEST MANY-TO-MANY ===\n+const article = await Article.create({\n+  title: \"Why MongoDB is not SQL\",\n+  content: \"Long philosophical text about documents...\"\n+});\n+\n+const tag1 = await Tag.create({ name: \"database\" });\n+const tag2 = await Tag.create({ name: \"mongodb\" });\n+\n+// связываем статью с тегами\n+article.tags.push(tag1._id, tag2._id);\n+await article.save();\n+\n+// связываем теги со статьёй\n+tag1.articles.push(article._id);\n+tag2.articles.push(article._id);\n+\n+await tag1.save();\n+await tag2.save();\n+\n+\n   app.listen(PORT, () => {\n     console.log(`🚀 Server started on port ${PORT}`)\n   })\n }\n"
+                }
+            ],
+            "date": 1765961261787,
+            "name": "Commit-0",
+            "content": "import dotenv from 'dotenv'\nimport { Publisher } from \"./models/Publisher\";\nimport { Magazine } from \"./models/Magazine\";\n\ndotenv.config()\n\nimport app from './app'\nimport { connectDB } from './config/db'\n\nconst PORT = process.env.PORT || 3000\n\nconst startServer = async () => {\n  await connectDB()\n\n  app.listen(PORT, () => {\n    console.log(`🚀 Server started on port ${PORT}`)\n  })\n}\n\nstartServer()\n"
+        }
+    ]
+}

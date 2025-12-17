@@ -1,0 +1,20 @@
+import dotenv from 'dotenv'
+import { Publisher } from './models/Publisher'
+import { Magazine } from './models/Magazine'
+
+dotenv.config()
+
+import app from './app'
+import { connectDB } from './config/db'
+
+const PORT = process.env.PORT || 3000
+
+const startServer = async () => {
+  await connectDB()
+
+  app.listen(PORT, () => {
+    console.log(`🚀 Server started on port ${PORT}`)
+  })
+}
+
+startServer()
