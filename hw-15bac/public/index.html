@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mini Chat</title>
+  </head>
+  <body>
+    <h2>Чат</h2>
+
+    <div id="messages"></div>
+
+    <input id="messageInput" placeholder="Введите сообщение..." />
+    <button id="sendBtn">Отправить</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io()
+
+      const input = document.getElementById('messageInput')
+      const btn = document.getElementById('sendBtn')
+      const messages = document.getElementById('messages')
+
+      btn.addEventListener('click', () => {
+        const text = input.value.trim()
+        if (!text) return
+        socket.emit('chat message', text)
+        input.value = ''
+      })
+
+      socket.on('message received', (msg) => {
+        const p = document.createElement('p')
+        p.textContent = msg
+        messages.appendChild(p)
+      })
+    </script>
+  </body>
+</html>
