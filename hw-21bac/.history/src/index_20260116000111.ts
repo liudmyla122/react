@@ -1,0 +1,9 @@
+// Главный файл для запуска всех заданий
+
+import './task1';
+import './task2';
+import './task3';
+import './task4';
+import './task5';
+
+console.log("\n=== Все задания выполнены! ===");
